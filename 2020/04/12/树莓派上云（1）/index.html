@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>树莓派上云（1） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。一、连接贝壳云前的准备1. 硬件     a) 树莓派*1(这里作者使用的是树莓派4B版本)     【以下可选】     b) led * 1     c) 220欧电阻 * 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派上云（1）">
+<meta property="og:url" content="http://yoursite.com/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。一、连接贝壳云前的准备1. 硬件     a) 树莓派*1(这里作者使用的是树莓派4B版本)     【以下可选】     b) led * 1     c) 220欧电阻 * 1">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E8%AE%BE%E5%A4%87.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8E%A5%E5%8F%A3.png">
+<meta property="og:image" content="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%B7%BB%E5%8A%A0%E6%8E%A5%E5%8F%A3.png">
+<meta property="og:image" content="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8A%A5%E8%AD%A6.png">
+<meta property="og:image" content="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E5%9B%9E%E8%B0%83png.png">
+<meta property="og:image" content="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/server%E9%85%B1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E4%B8%8A%E7%BA%BF.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8E%A7%E5%88%B6.png">
+<meta property="article:published_time" content="2020-04-12T05:43:55.000Z">
+<meta property="article:modified_time" content="2020-04-12T05:46:41.476Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E7%95%8C%E9%9D%A2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-树莓派上云（1）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/" class="article-date">
+  <time datetime="2020-04-12T05:43:55.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派上云（1）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"><a href="#带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南" class="headerlink" title="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"></a>带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南</h1><h2 id="使用贝壳云的原因"><a href="#使用贝壳云的原因" class="headerlink" title="使用贝壳云的原因"></a>使用贝壳云的原因</h2><pre><code>笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。</code></pre><h2 id="一、连接贝壳云前的准备"><a href="#一、连接贝壳云前的准备" class="headerlink" title="一、连接贝壳云前的准备"></a>一、连接贝壳云前的准备</h2><pre><code>1. 硬件
+    a) 树莓派*1(这里作者使用的是树莓派4B版本)
+    【以下可选】
+    b) led * 1
+    c) 220欧电阻 * 1
+    d) 杜邦线若干
+    e) 面包板 * 1
+
+2. 软件
+    a) python环境 （raspbian系统自带）
+    b) 贝壳云账号
+    c) github账号</code></pre><h2 id="二、开始搭建贝壳云环境"><a href="#二、开始搭建贝壳云环境" class="headerlink" title="二、开始搭建贝壳云环境"></a>二、开始搭建贝壳云环境</h2><p><strong>1. 登录贝壳云官网并注册账号，这里不再赘述。</strong></p>
+<p>注册完毕后在主页点击右上角你的用户名，会进入控制台界面<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E7%95%8C%E9%9D%A2.png" alt="登录界面" title="登录界面"><br><em>ps:这里我已经创建好了智能设备、数据接口还有报警提示，如果是新创建的账号里这三项都是0</em> </p>
+<p><strong>2.添加智能设备</strong>  </p>
+<ul>
+<li><p>点击左侧边框的** <strong><em>“智能设备”</em></strong> (注意不是子设备!) -&gt; <strong><em>“添加设备”</em></strong><br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E8%AE%BE%E5%A4%87.png" alt="添加智能设备"></p>
+</li>
+<li><p>点击下方的 <strong><em>“添加智能设备”</em></strong><br>然后依次填入设备名称、设备简介、详细说明，接着点 <strong><em>“确定”</em></strong> 然后就能在设备列表中看到刚刚你所添加的新设备了。<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87.png" alt="图"><br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF.png" alt="图">  </p>
+</li>
+<li><p><em>划重点：在设备列表中，你需要记住两个重要的值，一个是设备的ID，一个是设备的APIKEY，这两个值等会代码中要用到*</em></p>
+</li>
+</ul>
+<p><strong>！注意：一旦添加新设备该设备是无法被删除的！</strong></p>
+<p><strong>3.添加数据接口：</strong><br>数据接口顾名思义就是用来接收智能设备上传到贝壳云的数据的接口</p>
+<ul>
+<li>点击左侧边框的 <strong><em>“接口”</em></strong> -&gt; <strong><em>“添加接口”</em></strong> 然后依次填入接口名称、选择所属设备、选择接口类型、单位、接口描述。<br><img src="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8E%A5%E5%8F%A3.png" alt="图"><br><img src="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%B7%BB%E5%8A%A0%E6%8E%A5%E5%8F%A3.png" alt="图"></li>
+<li>这里注意了，你可以添加多个接口并指向同一个设备，这样就实现了一个设备上报多个数据的功能</li>
+</ul>
+<p><strong>4. 添加报警提示【可选】同样是依葫芦画瓢填就行了。</strong><br><img src="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8A%A5%E8%AD%A6.png" alt="图"></p>
+<p>但这里比较麻烦的是，如果你选择了使用钉钉机器人/微信来接收报警信息的话，你需要填入一个回调地址。</p>
+<p><img src="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E5%9B%9E%E8%B0%83png.png" alt="图"><br>可以看到回调地址框上有两个选项 <strong>钉钉机器人|微信（方糖）</strong></p>
+<p><strong>那么如何获得这个回调地址呢？</strong><br>我以微信为例，我们点开右边微信（方糖）的链接，会跳出Server酱的页面<br><img src="https://github.com/debugyes/MarkdownPics/raw/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/server%E9%85%B1.png" alt="server酱"><br>然后我们点击右上角的 <strong><em>登入</em></strong> 绑定github账号后，点击旁边的 <strong><em>微信推送</em></strong>，接着扫描二维码跟着提示走就好了。以上操作完成后，你就可以通过微信来接收报警信息了。</p>
+<h2 id="三、开始调试软件"><a href="#三、开始调试软件" class="headerlink" title="三、开始调试软件"></a>三、开始调试软件</h2><p><strong>1. 下载官方给出的demo程序</strong><br><a href="https://github.com/bigiot/bigiotRaspberryPi" target="_blank" rel="noopener">https://github.com/bigiot/bigiotRaspberryPi</a></p>
+<p><strong>2. 修改python文件夹下的led.py文件</strong></p>
+<ul>
+<li>打开文件我们可以看到开头这几行代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#must be modified&#x3D;&#x3D;&#x3D;</span><br><span class="line">DEVICEID&#x3D;&#39;112&#39;</span><br><span class="line">APIKEY&#x3D;&#39;cxx036f9c&#39;</span><br><span class="line">#modify end&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br></pre></td></tr></table></figure></li>
+<li>我们要做的修改只有两行，我们分别将DEVICEID后的值改成上文提到的ID值，同样对API也进行修改。完毕保存</li>
+</ul>
+<p><strong>3. 搭建硬件【可选】</strong></p>
+<ul>
+<li>代码中标明led引脚的这一行，我们将led的正极通过一个220的电阻串联接在17脚上，负极接在GND上。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">led &#x3D; LED(17)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="四、运行程序"><a href="#四、运行程序" class="headerlink" title="四、运行程序"></a>四、运行程序</h2><p>终于来到最后一步了！  </p>
+<ul>
+<li>我们先将代码发送到树莓派上，并进入目录。接着在命令行模式下输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 led.py</span><br></pre></td></tr></table></figure></li>
+<li>敲下回车，如果你看到屏幕有这样的输出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">waiting for connect bigiot.net...</span><br><span class="line">&#123;&quot;M&quot;:&quot;WELCOME TO BIGIOT&quot;&#125;</span><br><span class="line">&#123;&quot;M&quot;:&quot;checkinok&quot;,&quot;ID&quot;:&quot;D16704&quot;,&quot;NAME&quot;:&quot;\u706f\u7528\u4e8e\u6d4b\u8bd5&quot;,&quot;T&quot;:&quot;1585302790&quot;&#125;</span><br></pre></td></tr></table></figure>
+那么恭喜你，你已经成功地连接到了贝壳云！</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E4%B8%8A%E7%BA%BF.png" alt="图"></p>
+<ul>
+<li>点击红圈的控制按钮，进入控制页面</li>
+<li>点击播放按钮，可以看到LED亮了起来</li>
+<li>点击停止按钮，可以看到LED熄灭<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8E%A7%E5%88%B6.png" alt="图"></li>
+</ul>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>至此，树莓派快速上云的全部内容就结束了，本篇指南完成了树莓派连接贝壳云并进行控制的功能，下期会更新树莓派向贝壳云发送数据的功能，敬请期待。</p>
+<p>小伙伴们如果有任何疑问或者建议的话，欢迎在下方留言！</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.bigiot.net/help.html" target="_blank" rel="noopener">https://www.bigiot.net/help.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/" data-id="ck8wmmm1x0000jmc107rw70cj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/">树莓派上云（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
