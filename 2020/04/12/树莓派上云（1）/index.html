@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>树莓派上云（1） | megumi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。一、连接贝壳云前的准备1. 硬件     a) 树莓派*1(这里作者使用的是树莓派4B版本)     【以下可选】     b) led * 1     c) 220欧电阻 * 1">
+  <meta name="description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派上云（1）">
 <meta property="og:url" content="http://yoursite.com/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="megumi&#39;s Blog">
-<meta property="og:description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。一、连接贝壳云前的准备1. 硬件     a) 树莓派*1(这里作者使用的是树莓派4B版本)     【以下可选】     b) led * 1     c) 220欧电阻 * 1">
+<meta property="og:description" content="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南使用贝壳云的原因笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历">
 <meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E7%95%8C%E9%9D%A2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E8%AE%BE%E5%A4%87.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87.png">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E4%B8%8A%E7%BA%BF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91/%E6%8E%A7%E5%88%B6.png">
 <meta property="article:published_time" content="2020-04-12T05:43:55.000Z">
-<meta property="article:modified_time" content="2020-04-13T04:00:35.458Z">
+<meta property="article:modified_time" content="2020-04-13T04:04:19.915Z">
 <meta property="article:author" content="kaotu megumi">
 <meta property="article:tag" content="树莓派">
 <meta name="twitter:card" content="summary">
@@ -172,7 +172,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"><a href="#带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南" class="headerlink" title="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"></a>带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南</h1><h2 id="使用贝壳云的原因"><a href="#使用贝壳云的原因" class="headerlink" title="使用贝壳云的原因"></a>使用贝壳云的原因</h2><pre><code>笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历（先帮你们踩雷）。</code></pre><h2 id="一、连接贝壳云前的准备"><a href="#一、连接贝壳云前的准备" class="headerlink" title="一、连接贝壳云前的准备"></a>一、连接贝壳云前的准备</h2><pre><code>1. 硬件
+        <h1 id="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"><a href="#带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南" class="headerlink" title="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"></a>带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南</h1><h2 id="使用贝壳云的原因"><a href="#使用贝壳云的原因" class="headerlink" title="使用贝壳云的原因"></a>使用贝壳云的原因</h2><pre><code>笔者项目中需要用到天猫精灵语音控制物联网设备的功能，而天猫精灵的APP是可以支持贝壳云的智能设备的，所以就记下我的上云经历</code></pre><a id="more"></a>
+<h2 id="一、连接贝壳云前的准备"><a href="#一、连接贝壳云前的准备" class="headerlink" title="一、连接贝壳云前的准备"></a>一、连接贝壳云前的准备</h2><pre><code>1. 硬件
     a) 树莓派*1(这里作者使用的是树莓派4B版本)
     【以下可选】
     b) led * 1
