@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,数组," />
 
 
 
@@ -79,11 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="megumi&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="java数组的使用与内存图解一、序言数组是大家用的比较多的一种 连续存储结构，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下面我们来剖析数组。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java一维数组的使用与内存图解">
+<meta property="og:url" content="http://yoursite.com/2020/04/14/Java%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="megumi&#39;s Blog">
+<meta property="og:description" content="java数组的使用与内存图解一、序言数组是大家用的比较多的一种 连续存储结构，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下面我们来剖析数组。">
+<meta property="article:published_time" content="2020-04-14T08:26:41.000Z">
+<meta property="article:modified_time" content="2020-04-14T08:29:11.643Z">
 <meta property="article:author" content="kaotu megumi">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
 
 
@@ -114,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/14/Java一维数组/"/>
 
 
 
 
 
-  <title>megumi's Blog</title>
+  <title>Java一维数组的使用与内存图解 | megumi's Blog</title>
   
 
 
@@ -139,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -233,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -265,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/14/Java%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/" itemprop="url">Java一维数组的使用与内存图解</a></h1>
+          <h1 class="post-title" itemprop="name headline">Java一维数组的使用与内存图解</h1>
         
 
         <div class="post-meta">
@@ -317,16 +320,18 @@
       
 
       
-        
-          <h1 id="java数组的使用与内存图解"><a href="#java数组的使用与内存图解" class="headerlink" title="java数组的使用与内存图解"></a>java数组的使用与内存图解</h1><h2 id="一、序言"><a href="#一、序言" class="headerlink" title="一、序言"></a>一、序言</h2><p>数组是大家用的比较多的一种 <strong>连续存储结构</strong>，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下<br>面我们来剖析数组。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/14/Java%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h1 id="java数组的使用与内存图解"><a href="#java数组的使用与内存图解" class="headerlink" title="java数组的使用与内存图解"></a>java数组的使用与内存图解</h1><h2 id="一、序言"><a href="#一、序言" class="headerlink" title="一、序言"></a>一、序言</h2><p>数组是大家用的比较多的一种 <strong>连续存储结构</strong>，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下<br>面我们来剖析数组。</p>
+<a id="more"></a>
+
+<h2 id="二、一维数组"><a href="#二、一维数组" class="headerlink" title="二、一维数组"></a>二、一维数组</h2><h3 id="1-为什么叫一维数组？"><a href="#1-为什么叫一维数组？" class="headerlink" title="1. 为什么叫一维数组？"></a>1. 为什么叫一维数组？</h3><p>因为这个数组只有一行，元素个数可以按需分配，但注意一定不能溢出（就是数组放不下了）。<br><br><br></p>
+<h3 id="2-如何定义一维数组？"><a href="#2-如何定义一维数组？" class="headerlink" title="2. 如何定义一维数组？"></a>2. 如何定义一维数组？</h3><p>定义一维数组有两种格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a）数据类型[ ] 数组名　　例如：<span class="keyword">int</span>[ ] array;</span><br><span class="line">b) 数据类型 数组名 [ ] 　例如：<span class="keyword">int</span> array[ ];</span><br></pre></td></tr></table></figure>
+<p>两种有本质上的区别吗？其实区别不大，只是念法不同：<br>a格式：定义了一个[数据类型]（如int）类型的数组[数组名]变量。<br>b格式：定义了一个[数据类型]（如int）类型的[数组名]数组名变量。<br><br><br></p>
+<h3 id="3-一维数组怎么初始化？"><a href="#3-一维数组怎么初始化？" class="headerlink" title="3. 一维数组怎么初始化？"></a>3. 一维数组怎么初始化？</h3><p>有编程经验的朋友肯定知道初始化就是给数组赋个初始值，把原来数组中的的垃圾数字覆盖掉。在java中，初始化一维数组的方式有两种，&gt;一种叫 <strong>动态初始化</strong>，一种叫 <strong>静态初始化</strong>。<br><br></p>
+<h4 id="一维数组的动态初始化"><a href="#一维数组的动态初始化" class="headerlink" title="一维数组的动态初始化"></a>一维数组的动态初始化</h4><p>动态初始化就是只指定长度，由系统给出初始化值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式为：数据类型[ ] 数组名 = <span class="keyword">new</span> 数据类型[数组长度];　　</span><br><span class="line">例：<span class="keyword">int</span>[ ] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<p>“Java一维数组.md” 105L, 5228C</p>
+
       
     </div>
     
@@ -341,160 +346,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kaotu megumi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="megumi's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/" itemprop="url">树莓派上云（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-12T13:43:55+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-
+            <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h1 id="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"><a href="#带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南" class="headerlink" title="带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南"></a>带你体验物联网——使用树莓派简单快速连接贝壳云帮助指南</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BA%91%EF%BC%881%EF%BC%89/" rel="next" title="树莓派上云（1）">
+                <i class="fa fa-chevron-left"></i> 树莓派上云（1）
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -504,10 +387,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -515,6 +399,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -535,8 +423,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -600,6 +497,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java数组的使用与内存图解"><span class="nav-number">1.</span> <span class="nav-text">java数组的使用与内存图解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、序言"><span class="nav-number">1.1.</span> <span class="nav-text">一、序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、一维数组"><span class="nav-number">1.2.</span> <span class="nav-text">二、一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么叫一维数组？"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 为什么叫一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何定义一维数组？"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 如何定义一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-一维数组怎么初始化？"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 一维数组怎么初始化？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维数组的动态初始化"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">一维数组的动态初始化</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -740,6 +653,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
