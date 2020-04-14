@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,数组," />
+  <meta name="keywords" content="数组," />
 
 
 
@@ -85,12 +85,17 @@
 <meta property="og:url" content="http://yoursite.com/2020/04/14/Java%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="megumi&#39;s Blog">
 <meta property="og:description" content="java数组的使用与内存图解一、序言数组是大家用的比较多的一种 连续存储结构，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下面我们来剖析数组。">
-<meta property="article:published_time" content="2020-04-14T08:26:41.000Z">
-<meta property="article:modified_time" content="2020-04-14T08:29:11.643Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/6.png">
+<meta property="article:published_time" content="2020-04-14T12:24:49.000Z">
+<meta property="article:modified_time" content="2020-04-14T12:30:35.956Z">
 <meta property="article:author" content="kaotu megumi">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/5.png">
 
 
 
@@ -282,7 +287,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T16:26:41+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T20:24:49+08:00">
                 2020-04-14
               </time>
             
@@ -320,17 +325,31 @@
       
 
       
-        <h1 id="java数组的使用与内存图解"><a href="#java数组的使用与内存图解" class="headerlink" title="java数组的使用与内存图解"></a>java数组的使用与内存图解</h1><h2 id="一、序言"><a href="#一、序言" class="headerlink" title="一、序言"></a>一、序言</h2><p>数组是大家用的比较多的一种 <strong>连续存储结构</strong>，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下<br>面我们来剖析数组。</p>
+        <h1 id="java数组的使用与内存图解"><a href="#java数组的使用与内存图解" class="headerlink" title="java数组的使用与内存图解"></a>java数组的使用与内存图解</h1><h2 id="一、序言"><a href="#一、序言" class="headerlink" title="一、序言"></a>一、序言</h2><p>数组是大家用的比较多的一种 <strong>连续存储结构</strong>，数组可以被抽象地理解为一组小格子，在java中，数组主要分为一维数组和二维数组，下面我们来剖析数组。</p>
 <a id="more"></a>
-
 <h2 id="二、一维数组"><a href="#二、一维数组" class="headerlink" title="二、一维数组"></a>二、一维数组</h2><h3 id="1-为什么叫一维数组？"><a href="#1-为什么叫一维数组？" class="headerlink" title="1. 为什么叫一维数组？"></a>1. 为什么叫一维数组？</h3><p>因为这个数组只有一行，元素个数可以按需分配，但注意一定不能溢出（就是数组放不下了）。<br><br><br></p>
 <h3 id="2-如何定义一维数组？"><a href="#2-如何定义一维数组？" class="headerlink" title="2. 如何定义一维数组？"></a>2. 如何定义一维数组？</h3><p>定义一维数组有两种格式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a）数据类型[ ] 数组名　　例如：<span class="keyword">int</span>[ ] array;</span><br><span class="line">b) 数据类型 数组名 [ ] 　例如：<span class="keyword">int</span> array[ ];</span><br></pre></td></tr></table></figure>
 <p>两种有本质上的区别吗？其实区别不大，只是念法不同：<br>a格式：定义了一个[数据类型]（如int）类型的数组[数组名]变量。<br>b格式：定义了一个[数据类型]（如int）类型的[数组名]数组名变量。<br><br><br></p>
-<h3 id="3-一维数组怎么初始化？"><a href="#3-一维数组怎么初始化？" class="headerlink" title="3. 一维数组怎么初始化？"></a>3. 一维数组怎么初始化？</h3><p>有编程经验的朋友肯定知道初始化就是给数组赋个初始值，把原来数组中的的垃圾数字覆盖掉。在java中，初始化一维数组的方式有两种，&gt;一种叫 <strong>动态初始化</strong>，一种叫 <strong>静态初始化</strong>。<br><br></p>
+<h3 id="3-一维数组怎么初始化？"><a href="#3-一维数组怎么初始化？" class="headerlink" title="3. 一维数组怎么初始化？"></a>3. 一维数组怎么初始化？</h3><p>有编程经验的朋友肯定知道初始化就是给数组赋个初始值，把原来数组中的的垃圾数字覆盖掉。在java中，初始化一维数组的方式有两种，一种叫 <strong>动态初始化</strong>，一种叫 <strong>静态初始化</strong>。<br><br></p>
 <h4 id="一维数组的动态初始化"><a href="#一维数组的动态初始化" class="headerlink" title="一维数组的动态初始化"></a>一维数组的动态初始化</h4><p>动态初始化就是只指定长度，由系统给出初始化值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式为：数据类型[ ] 数组名 = <span class="keyword">new</span> 数据类型[数组长度];　　</span><br><span class="line">例：<span class="keyword">int</span>[ ] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
-<p>“Java一维数组.md” 105L, 5228C</p>
+<p>需要注意的地方：<font color = red><strong>等号左右的数据类型要一样！</strong><br>　　　　　　　　<strong>数组长度就是数组元素个数，也就代表着这个数组能装多少个元素！</strong></font><br><br></p>
+<h4 id="一维数组的静态初始化"><a href="#一维数组的静态初始化" class="headerlink" title="一维数组的静态初始化"></a>一维数组的静态初始化</h4><p>静态初始化方式就是大家的老朋友啦</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一般格式为：数据类型[ ] 数组名 = <span class="keyword">new</span> 数据类型[ ] &#123;元素<span class="number">1</span>，元素<span class="number">2</span>，元素<span class="number">3</span>...&#125;; 　</span><br><span class="line">(右侧的[ ]中如果不写长度的话系统会自动统计初始化了多少个值，并将其作为数组长度)</span><br><span class="line">简短格式为：数据类型[ ] 数组名 = &#123;元素<span class="number">1</span>，元素<span class="number">2</span>，元素<span class="number">3</span>...&#125;;</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="4-一维数组如何操作？"><a href="#4-一维数组如何操作？" class="headerlink" title="4. 一维数组如何操作？"></a>4. 一维数组如何操作？</h3><p>Java提供了一种用数组元素的编号来操作数组的方法，什么意思呢？就是数组里的每一个元素都有自己的编号，就像学生的学号一样，每个编号代表一个学生（当然在数组中一个编号就代表一个元素）<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/5.png" alt="pic"></p>
+<p>假设这是小张创建的一维数组，小格子里装的16、32、64、128、256、512、1024、2048、666这些数字，就是数组的元素，重点在下方红色字标出的数字，这可不是元素了，这是元素的 <strong>编号</strong>，在Java中，这个编号其实叫 <strong>索引</strong>，<font color = red> <strong><em>数组的索引默认从0开始</em></strong></font>。<br><br></p>
+<h4 id="1-访问一个元素值"><a href="#1-访问一个元素值" class="headerlink" title="(1)访问一个元素值"></a>(1)访问一个元素值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">访问一个元素的值：数组名[索引]</span><br><span class="line">重新给该元素赋值：数组名[索引] = 新值;</span><br></pre></td></tr></table></figure>
+<h4 id="2-遍历数组"><a href="#2-遍历数组" class="headerlink" title="(2)遍历数组"></a>(2)遍历数组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (int i &#x3D; 0; i &lt; 数组名.length; i++) &#123;</span><br><span class="line">　　　　System.out.println(arr[i]);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-一维数组是怎么生成的？"><a href="#5-一维数组是怎么生成的？" class="headerlink" title="5.一维数组是怎么生成的？"></a>5.一维数组是怎么生成的？</h3><p>我们先假设有这么一行代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[ ] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">8</span>];<span class="comment">//定义了一个一维数组，数组名叫arr,里面一共有8个int类型的元素。</span></span><br></pre></td></tr></table></figure>
+
+<p>接着我们要了解分配分配的概念，这里主要涉及到堆内存和栈内存。<br>简单点理解栈里存放着所有局部变量，堆里存放着所有new出来的东西。<br>（但实际上并不是说在内存里有堆和栈这两块区域，而是指分配内存的方式不同）<br><br><br>也就是说，上面的代码中，我们的arr变量是存放在栈里的，new后面那一行是存放在堆中的。<br><br>看不懂？没关系，我们画一张图。<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/3.png" alt="pic"><br><br><br><br>首先，编译到 int[] arr这边时， Jvm就在<strong>栈内存</strong>中给arr变量划分了一块内存空间。接着，编译到了右边的new int[8]，前面提过new出来的东西都放在堆内存中，于是Jvm在<strong>堆内存</strong>中建立了一个数组，这个数组有8个小格子，也就是能放8个元素，如下图<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/2.png" alt="pic"><br><br><br><br>接着Jvm对数组进行初始化，在堆内存中，int类型变量的初值默认是0<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/1.png" alt="pic"><br><br><br><br>最后再返回一个地址到栈内存中的引用，这里假设是0x001<br><img src="https://raw.githubusercontent.com/debugyes/MarkdownPics/master/java%E6%95%B0%E7%BB%84/6.png" alt="pic"><br><br><br><br>这里将地址传给arr变量这种方式个人觉得挺像C中指针的概念，在C语言中同样可以通过指针来操作数组。只不过在Java中，这个arr变量不叫指针变量，而是叫引用。这里插一句题外话，两个不同的引用可以指向同一个数组，就像两根遛狗绳可以牵一条狗一样（不太恰当的比喻XD）。</p>
+<h2 id="三、结语"><a href="#三、结语" class="headerlink" title="三、结语"></a>三、结语</h2><p>以上所有就是Java中一维数组的内容了，有问题的小伙伴可以在下方留言，大家一起交流！</p>
+<p>　</p>
 
       
     </div>
@@ -347,8 +366,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
           
             <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
           
@@ -474,7 +491,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -507,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java数组的使用与内存图解"><span class="nav-number">1.</span> <span class="nav-text">java数组的使用与内存图解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、序言"><span class="nav-number">1.1.</span> <span class="nav-text">一、序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、一维数组"><span class="nav-number">1.2.</span> <span class="nav-text">二、一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么叫一维数组？"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 为什么叫一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何定义一维数组？"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 如何定义一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-一维数组怎么初始化？"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 一维数组怎么初始化？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维数组的动态初始化"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">一维数组的动态初始化</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java数组的使用与内存图解"><span class="nav-number">1.</span> <span class="nav-text">java数组的使用与内存图解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、序言"><span class="nav-number">1.1.</span> <span class="nav-text">一、序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、一维数组"><span class="nav-number">1.2.</span> <span class="nav-text">二、一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么叫一维数组？"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 为什么叫一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何定义一维数组？"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 如何定义一维数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-一维数组怎么初始化？"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 一维数组怎么初始化？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维数组的动态初始化"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">一维数组的动态初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一维数组的静态初始化"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">一维数组的静态初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-一维数组如何操作？"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 一维数组如何操作？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-访问一个元素值"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">(1)访问一个元素值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-遍历数组"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">(2)遍历数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-一维数组是怎么生成的？"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.一维数组是怎么生成的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、结语"><span class="nav-number">1.3.</span> <span class="nav-text">三、结语</span></a></li></ol></li></ol></div>
             
 
           </div>
